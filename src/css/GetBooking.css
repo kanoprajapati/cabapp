@@ -1,12 +1,13 @@
 .booking-root {
   --active-color: #2196f3;
-  /* background: #f5f6fb; */
   min-height: 100vh;
+  
 }
 .booking-header {
   padding: 2rem 1rem 1rem;
   color: #fff;
   text-align: center;
+  cursor: pointer;
 }
 .header-title {
   font-size: 2rem;
@@ -226,4 +227,35 @@
   border-radius: 4px;
   cursor: pointer;
   margin-top: 0.5rem;
+}
+/* Scrollbar for chat */
+.MuiList-root {
+  scrollbar-width: thin;
+  scrollbar-color: #2196f3 #e3f2fd;
+}
+
+.MuiList-root::-webkit-scrollbar {
+  width: 8px;
+}
+
+.MuiList-root::-webkit-scrollbar-track {
+  background: #e3f2fd;
+}
+
+.MuiList-root::-webkit-scrollbar-thumb {
+  background-color: #2196f3;
+  border-radius: 10px;
+  border: 2px solid #e3f2fd;
+}
+
+@media (max-width: 600px) {
+  .MuiDrawer-paper {
+    width: 100% !important;
+  }
+}
+
+
+.box-padding {
+  padding: 16px;
+  margin-bottom: 16px;
 }

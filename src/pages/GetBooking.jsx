@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../css/GetBooking.css';
 import BookingCard from '../componet/BookingCard';
+import DutyTypeChip from '../componet/DutyTypeChip';
+import { Box } from '@mui/material';
 
 export default function GetBooking({ activeColor }) {
   const [searchText, setSearchText] = useState('');
@@ -11,6 +13,8 @@ export default function GetBooking({ activeColor }) {
   const [locationSuggestions, setLocationSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const dutyGroups = ['All', 'Sedan', 'SUV', 'Mini', 'Bus', 'Auto'];
+const [selectedDuty, setSelectedDuty] = useState('All');
 
   const vehicleNames = ['Car', 'Bike', 'Scooter', 'Auto', 'Bicycle'];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -195,6 +199,16 @@ export default function GetBooking({ activeColor }) {
 
         <section className="booking-results">
           <h2>Available Bookings</h2>
+          <Box sx={{ mb: 2, display: 'flex', gap: 1,overflowX: 'auto' }}>
+  {dutyGroups.map(group => (
+    <DutyTypeChip
+      key={group}
+      dutyGroup={group}
+      selectedDuty={selectedDuty}
+      onSelectDuty={setSelectedDuty}
+    />
+  ))}
+</Box>
           <div className="content-placeholder">
   <BookingCard
     bookingId="BK12345"

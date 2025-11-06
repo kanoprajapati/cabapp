@@ -73,10 +73,9 @@
   transform: scale(1.05);
 }
 
-/* Inactive tabs */
 .tab-item.inactive {
   /* background-color: #f8f9fa; */
-  border-bottom: 2px solid #dee2e6;
+  border-bottom: 2px solid #000000;
   border-top: 2px solid transparent;
   transition: all 0.3s ease;
 }
