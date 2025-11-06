@@ -1,0 +1,217 @@
+.tab-navigation {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  bottom: 10px;
+  z-index: 100;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.tabs-container {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  height: 55px;
+  width: 100%;
+  /* background: linear-gradient(to bottom, #ffffff, #f8f9fa); */
+}
+
+.tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-item {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 8px;
+  /* background-color: var(--tab-color-light-inactive, #f8f9fa); */
+  border: 1 px solid transparent;
+  border-bottom: 2px solid #dee2e6;
+  border-radius: 12px 12px 0 0;
+  margin-right: -2px;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-item.active {
+  background-color: var(--tab-color-light);
+  border-top: 1px solid var(--tab-color);
+  border-left: 1px solid var(--tab-color);
+  border-right: 1px solid var(--tab-color);
+  border-bottom: none;
+  z-index: 2;
+  transform: translateY(0px);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-item.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -12px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 14px solid var(--tab-color);
+  z-index: 3;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.tab-item.active .tab-label {
+  color: var(--tab-color);
+  font-weight: 700;
+  transform: scale(1.05);
+}
+
+/* Inactive tabs */
+.tab-item.inactive {
+  /* background-color: #f8f9fa; */
+  border-bottom: 2px solid #dee2e6;
+  border-top: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-item.inactive .tab-label {
+  color: #6c757d;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tab-label {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Hover effects */
+.tab-item.inactive:hover {
+  background-color: #e9ecef;
+  border-bottom-color: #adb5bd;
+  transform: translateY(-1px);
+}
+
+.tab-item.inactive:hover .tab-label {
+  color: #495057;
+  transform: scale(1.02);
+}
+
+.tab-item.active:hover {
+  background-color: var(--tab-color-light);
+  border-top-color: var(--tab-color);
+  border-left-color: var(--tab-color);
+  border-right-color: var(--tab-color);
+  transform: translateY(0px);
+}
+
+/* Smooth animations */
+.tab-item {
+  animation: tabSwitch 0.4s ease-out;
+}
+
+@keyframes tabSwitch {
+  0% {
+    transform: translateY(2px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tab-navigation {
+    padding: 0;
+  }
+  
+  .tabs-container {
+    height: 50px;
+  }
+  
+  .tab-item {
+    padding: 10px 6px;
+    min-width: 70px;
+  }
+  
+  .tab-label {
+    font-size: 13px;
+  }
+  
+  .tab-item.active::after {
+    bottom: -10px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid var(--tab-color);
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-container {
+    height: 48px;
+  }
+  
+  .tab-item {
+    padding: 8px 4px;
+    min-width: 65px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .tab-label {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .tab-item.active {
+    border-width: 2px;
+  }
+  
+  .tab-item.active::after {
+    bottom: -8px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid var(--tab-color);
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .tabs-container {
+    height: 60px;
+  }
+  
+  .tab-item {
+    padding: 14px 12px;
+  }
+  
+  .tab-label {
+    font-size: 15px;
+  }
+  
+  .tab-item.active::after {
+    bottom: -14px;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 16px solid var(--tab-color);
+  }
+}
+
+/* Ensure full width and proper container behavior */
+.tab-navigation, .tabs-container {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
